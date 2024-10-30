@@ -1,0 +1,526 @@
+<html lang="vi">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Menu Đồ Uống
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f5f5dc;
+            color: #4b2e2e;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header, .contact {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .header p {
+            font-size: 18px;
+            margin: 0;
+        }
+        .contact p {
+            font-size: 18px;
+            margin: 0;
+        }
+        .menu-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .menu-column {
+            width: 48%;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .menu-column:hover {
+            transform: scale(1.02);
+        }
+        .menu-column h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #4b2e2e;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+        .menu-column ul {
+            list-style: none;
+            padding: 0;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .menu-column ul li {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .menu-column ul li:hover {
+            background-color: #e0d5a8;
+        }
+        .note {
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        img {
+            max-width: 50px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        /* Popup styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+        .popup-content h2 {
+            color: #4b2e2e;
+            margin-bottom: 10px;
+        }
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4b2e2e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Cart styling */
+        .cart {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #4b2e2e;
+            border-radius: 8px;
+        }
+        .cart h3 {
+            margin: 0;
+            text-align: center;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .checkout-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4b2e2e;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+        }
+
+        /* Payment methods styling */
+        .payment-methods {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .payment-methods i {
+            font-size: 24px;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .payment-methods i:hover {
+            color: #4b2e2e;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+  </style>
+ </head>
+ <body>
+<iframe style="border-radius:12px" 
+            src="https://open.spotify.com/embed/album/1xjl5BzDqRbZBaWYESTLmI?utm_source=generator" 
+            width="100%" height="380" frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<script>
+    window.onload = function() {
+        const player = document.getElementById("spotify-player");
+        player.src += "&autoplay=1";
+    }
+</script>
+
+  <div class="container">
+   <div class="header">
+    <h1>
+     Điềm.mm.
+    </h1>
+    <p>
+     Hide to be seen
+    </p>
+   </div>
+   <div class="contact">
+    <p>
+     Địa chỉ: 25 Nguyễn Khắc Diện, Phú Lộc Đông 3, Diên Khánh
+    </p>
+    <p>
+     Điện thoại: 03646 335 821
+    </p>
+    <p>
+     Instagram: mm.meid
+    </p>
+   </div>
+   <div class="menu-section">
+    <div class="menu-column">
+     <h2 onclick="toggleMenu('cafe')">
+      CAFÉ
+     </h2>
+     <ul id="cafe">
+      <li onclick="addToCart('Café đen', 'Giá: 22k')">
+       <img alt="A cup of black coffee" height="50" src="https://storage.googleapis.com/a1aa/image/G1J21ZkqtM4ILdYJZSY7tRfkFcgCBtsSPMeedUUQVKsTZZXnA.jpg" width="50"/>
+       Café đen
+       <span>
+        22k
+       </span>
+      </li>
+      <li onclick="addToCart('Café sữa', 'Giá: 22k')">
+       <img alt="A cup of coffee with milk" height="50" src="https://storage.googleapis.com/a1aa/image/Ik4QFVCnQA5oGBFen616ZwrKHjRi579ffKg6cyYSJ1SiZZXnA.jpg" width="50"/>
+       Café sữa
+       <span>
+        22k
+       </span>
+      </li>
+      <li onclick="addToCart('Bạc xỉu Điềm', 'Giá: 27k')">
+       <img alt="A cup of Bạc xỉu Điềm" height="50" src="https://storage.googleapis.com/a1aa/image/iW666rjyoE6FKhjvgTlm7of49ApYfYfqIPTtCW3CxYRHZZXnA.jpg" width="50"/>
+       Bạc xỉu Điềm
+       <span>
+        27k
+       </span>
+      </li>
+      <li onclick="addToCart('Bạc xỉu Muối', 'Giá: 35k')">
+       <img alt="A cup of Bạc xỉu Muối" height="50" src="https://storage.googleapis.com/a1aa/image/bcnCe5M0TCWKbSNl9X45tffidecsKpXiytn301WpZZPZ2yuOB.jpg" width="50"/>
+       Bạc xỉu Muối
+       <span>
+        35k
+       </span>
+      </li>
+      <li onclick="addToCart('Café Kem Trứng', 'Giá: 32k')">
+       <img alt="A cup of coffee with egg cream" height="50" src="https://storage.googleapis.com/a1aa/image/AiUDVtLNX0o0MtCYi8adeKZJfdAIeeqw4H2wlmZ7efWchL76E.jpg" width="50"/>
+       Café Kem Trứng
+       <span>
+        32k
+       </span>
+      </li>
+      <li onclick="addToCart('Café Kem Muối', 'Giá: 32k')">
+       <img alt="A cup of coffee with salted cream" height="50" src="https://storage.googleapis.com/a1aa/image/YzV3HCPlo565LJjIA4FoOuRzwe1UlHzUBIRnB1s3aiqAX21JA.jpg" width="50"/>
+       Café Kem Muối
+       <span>
+        32k
+       </span>
+      </li>
+      <li onclick="addToCart('Café hạt dẻ', 'Giá: 32k')">
+       <img alt="A cup of coffee with chestnut flavor" height="50" src="https://storage.googleapis.com/a1aa/image/3kHkIXoNvMo2JtAxWwjLF4baMn0WVQdWefgwoD46HTPeZZXnA.jpg" width="50"/>
+       Café hạt dẻ
+       <span>
+        32k
+       </span>
+      </li>
+      <li onclick="addToCart('Café cốt dừa', 'Giá: 32k')">
+       <img alt="A cup of coffee with coconut milk" height="50" src="https://storage.googleapis.com/a1aa/image/qRtO5jf38n1NVCxFvyKFXENrcNmiIgMMUgi8uPFPU334W21JA.jpg" width="50"/>
+       Café cốt dừa
+       <span>
+        32k
+       </span>
+      </li>
+      <li onclick="addToCart('Cocaine', 'Giá: 39k')">
+       <img alt="A cup of Cocaine coffee" height="50" src="https://storage.googleapis.com/a1aa/image/NHwJngoE01IWJ9zLGM4kxW1GmqdMcoA7tfyBxpqPXfaebZXnA.jpg" width="50"/>
+       Cocaine
+       <span>
+        39k
+       </span>
+      </li>
+     </ul>
+     <p class="note">
+      * Cảnh báo có thể gây nghiện
+     </p>
+    </div>
+    <div class="menu-column">
+     <h2 onclick="toggleMenu('hot')">
+      NÓNG chảy mỡ
+     </h2>
+     <ul id="hot">
+      <li onclick="addToCart('Hot Chocolate', 'Giá: 29k')">
+       <img alt="A cup of hot chocolate" height="50" src="https://storage.googleapis.com/a1aa/image/1BPS2nFvexQEHqz0N4C5SeYsxJfCte2ZlCjIeNzeYAkpUL76E.jpg" width="50"/>
+       Hot Chocolate
+       <span>
+        29k
+       </span>
+      </li>
+      <li onclick="addToCart('Hot Milk', 'Giá: 29k')">
+       <img alt="A cup of hot milk" height="50" src="https://storage.googleapis.com/a1aa/image/TeeYn2IsVKvjGEEN0YN2nI2cN8NSbC87fh4C70FXYM3CbZXnA.jpg" width="50"/>
+       Hot Milk
+       <span>
+        29k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà gừng mật ong', 'Giá: 29k')">
+       <img alt="A cup of ginger honey tea" height="50" src="https://storage.googleapis.com/a1aa/image/WXiQXOx2JWKKPdoQrWCy9bGhFq9RZezEYsvAH1QX7QkZW21JA.jpg" width="50"/>
+       Trà gừng mật ong
+       <span>
+        29k
+       </span>
+      </li>
+      <li onclick="addToCart('Lạc thần cam quế', 'Giá: 32k')">
+       <img alt="A cup of cinnamon orange tea" height="50" src="https://storage.googleapis.com/a1aa/image/2lB1jXyhJXIGJliL2ypzf0cobQfDG7H9NfwQJAxNu833aZXnA.jpg" width="50"/>
+       Lạc thần cam quế
+       <span>
+        32k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà nóng', 'Giá: 20k')">
+       <img alt="A cup of hot tea" height="50" src="https://storage.googleapis.com/a1aa/image/S8Ld834FL0ZUBppKHudaKG3Q6GidtUzoiYu4Ip2eGFGXW21JA.jpg" width="50"/>
+       Trà nóng
+       <span>
+        20k
+       </span>
+      </li>
+     </ul>
+     <p class="note">
+      * * Độc quyền tại Điềm
+     </p>
+    </div>
+    <div class="menu-column">
+     <h2 onclick="toggleMenu('cold')">
+      LẠNH lạnh như crush
+     </h2>
+     <ul id="cold">
+      <li onclick="addToCart('Sinh tố bơ', 'Giá: 40k')">
+       <img alt="A glass of avocado smoothie" height="50" src="https://storage.googleapis.com/a1aa/image/ZCXGLAAGxKZaAxJ29ieM4s7BYhQMB20EDOe58C2SVWleaZXnA.jpg" width="50"/>
+       Sinh tố bơ
+       <span>
+        40k
+       </span>
+      </li>
+      <li onclick="addToCart('Sinh tố dứa', 'Giá: 35k')">
+       <img alt="A glass of pineapple smoothie" height="50" src="https://storage.googleapis.com/a1aa/image/busposMoeGx4dyws3HIkFYYtTbJjEKFAeRlcgzdEzv1ptsrTA.jpg" width="50"/>
+       Sinh tố dứa
+       <span>
+        35k
+       </span>
+      </li>
+      <li onclick="addToCart('Sinh tố xoài', 'Giá: 38k')">
+       <img alt="A glass of mango smoothie" height="50" src="https://storage.googleapis.com/a1aa/image/WIFGafgKjTQTekDYie3NrfALlHjU1WpJ2YHAE28ILoRh0yuOB.jpg" width="50"/>
+       Sinh tố xoài
+       <span>
+        38k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà đào', 'Giá: 35k')">
+       <img alt="A glass of peach tea" height="50" src="https://storage.googleapis.com/a1aa/image/HNx59ZpuUZZEHtN3Wat2Vsz8xPW7ff39iHN7cqK77aZsssrTA.jpg" width="50"/>
+       Trà đào
+       <span>
+        35k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà vải', 'Giá: 35k')">
+       <img alt="A glass of lychee tea" height="50" src="https://storage.googleapis.com/a1aa/image/VpwqyixhDmq6PBUvxCRVQKwMLDrhSxnnKSeNce5G4hV5tsrTA.jpg" width="50"/>
+       Trà vải
+       <span>
+        35k
+       </span>
+      </li>
+     </ul>
+     <p class="note">
+      * Một ngụm mát lạnh để giải nhiệt
+     </p>
+    </div>
+    <div class="menu-column">
+     <h2 onclick="toggleMenu('milktea')">
+      TRÀ SỮA
+     </h2>
+     <ul id="milktea">
+      <li onclick="addToCart('Trà sữa truyền thống', 'Giá: 35k')">
+       <img alt="A glass of traditional milk tea" height="50" src="https://storage.googleapis.com/a1aa/image/vylaNqPCJ5pbIlZvFK6ZC2n653QneVGbELSr9CUNfjpXtsrTA.jpg" width="50"/>
+       Trà sữa truyền thống
+       <span>
+        35k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà sữa matcha', 'Giá: 40k')">
+       <img alt="A glass of matcha milk tea" height="50" src="https://storage.googleapis.com/a1aa/image/70DKRnMMqDLELpmRNDbQv4cE5XeN0mR3zilflKt2rlFNtsrTA.jpg" width="50"/>
+       Trà sữa matcha
+       <span>
+        40k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà sữa socola', 'Giá: 40k')">
+       <img alt="A glass of chocolate milk tea" height="50" src="https://storage.googleapis.com/a1aa/image/qDYbDcBt1hYfH6zyxAJkpYcv1DgAYnXsqeGmQBwwrW4mssrTA.jpg" width="50"/>
+       Trà sữa socola
+       <span>
+        40k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà sữa bạc hà', 'Giá: 42k')">
+       <img alt="A glass of mint milk tea" height="50" src="https://storage.googleapis.com/a1aa/image/i6WdYCdMk95JK1WnMXdHvrjbBblcCTjWobeeHqU8XGR4ssrTA.jpg" width="50"/>
+       Trà sữa bạc hà
+       <span>
+        42k
+       </span>
+      </li>
+     </ul>
+     <p class="note">
+      * Ngọt ngào béo ngậy
+     </p>
+    </div>
+    <div class="menu-column">
+     <h2 onclick="toggleMenu('fruittea')">
+      TRÀ trái cây
+     </h2>
+     <ul id="fruittea">
+      <li onclick="addToCart('Trà dâu', 'Giá: 35k')">
+       <img alt="A glass of strawberry tea" height="50" src="https://storage.googleapis.com/a1aa/image/iL4A46XdgtJbGNxi7QgXPYC19xuQifHe8Y1ezE4qOuSYbZXnA.jpg" width="50"/>
+       Trà dâu
+       <span>
+        35k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà kiwi', 'Giá: 38k')">
+       <img alt="A glass of kiwi tea" height="50" src="https://storage.googleapis.com/a1aa/image/RBSBfJUU480LMS2nK6HNssEgWFe7MNtfw9KChJZzYsrJbZXnA.jpg" width="50"/>
+       Trà kiwi
+       <span>
+        38k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà chanh', 'Giá: 30k')">
+       <img alt="A glass of lemon tea" height="50" src="https://storage.googleapis.com/a1aa/image/YH38eHXca1wZIq4ULpL0XclAZ9v1n7HsV8ckQSzHV4BQW21JA.jpg" width="50"/>
+       Trà chanh
+       <span>
+        30k
+       </span>
+      </li>
+      <li onclick="addToCart('Trà hoa quả', 'Giá: 40k')">
+       <img alt="A glass of mixed fruit tea" height="50" src="https://storage.googleapis.com/a1aa/image/0GOJCvfDHO2ZR6TrGto99VcF1bnqeaORxsJN8hNvIOyvtsrTA.jpg" width="50"/>
+       Trà hoa quả
+       <span>
+        40k
+       </span>
+      </li>
+     </ul>
+     <p class="note">
+      * Tươi mát và đầy hương vị
+     </p>
+    </div>
+    <div class="menu-column">
+     <h2 onclick="toggleMenu('yogurt')">
+      YOGURT
+     </h2>
+     <ul id="yogurt">
+      <li onclick="addToCart('Yogurt tự nhiên', 'Giá: 30k')">
+       <img alt="A cup of natural yogurt" height="50" src="https://storage.googleapis.com/a1aa/image/ufZywyJDQ2XXDq6cE6XGBPEopzQ9BeMuzetPR0qgYJssbZXnA.jpg" width="50"/>
+       Yogurt tự nhiên
+       <span>
+        30k
+       </span>
+      </li>
+      <li onclick="addToCart('Yogurt trái cây', 'Giá: 35k')">
+       <img alt="A cup of fruit yogurt" height="50" src="https://storage.googleapis.com/a1aa/image/H3C8cvY2dJ4AN1GbxTeKnTj7lI7DBXt5wuH3zHNzYq5hW21JA.jpg" width="50"/>
+       Yogurt trái cây
+       <span>
+        35k
+       </span>
+      </li>
+      <li onclick="addToCart('Yogurt dẻo', 'Giá: 40k')">
+       <img alt="A cup of chewy yogurt" height="50" src="https://storage.googleapis.com/a1aa/image/jNuX59mwLVq6HhvfAQcspyDaelPAigvN5NfxsLWRUieT3yuOB.jpg" width="50"/>
+       Yogurt dẻo
+       <span>
+        40k
+       </span>
+      </li>
+     </ul>
+     <p class="note">
+      * Mát lạnh cho một ngày nắng nóng
+     </p>
+    </div>
+   </div>
+      <div class="cart" id="cart">
+        <h3>Giỏ hàng</h3>
+        <div id="cart-items"></div>
+        <button class="checkout-btn" onclick="checkout()">Thanh toán</button>
+    </div>
+
+    <div class="payment-methods">
+        <h3>Phương thức thanh toán</h3>
+        <i class="fab fa-cc-visa"></i>
+        <i class="fab fa-cc-mastercard"></i>
+        <i class="fab fa-cc-paypal"></i>
+        <i class="fab fa-cc-jcb"></i>
+    </div>
+
+    <script>
+        const cartItems = [];
+
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+        }
+
+        function addToCart(itemName, itemPrice) {
+            cartItems.push(itemName);
+            updateCart();
+            alert(`${itemName} đã được thêm vào giỏ hàng!`);
+        }
+
+        function updateCart() {
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+            cartItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.textContent = item;
+                cartContainer.appendChild(div);
+            });
+        }
+
+        function checkout() {
+            if (cartItems.length === 0) {
+                alert('Giỏ hàng của bạn rỗng!');
+                return;
+            }
+            alert('Cảm ơn bạn đã đặt hàng!');
+            cartItems.length = 0; // Clear the cart
+            updateCart(); // Update the cart display
+        }
+    </script>
+</body>
+</html>
